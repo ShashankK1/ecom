@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DiscountService {
 
-    private static final int NTH_ORDER = 5;
+    private static final int NTH_ORDER = 2;
     private static final int DISCOUNT_PERCENT = 10;
 
     private final DiscountCodeRepository discountRepo;
