@@ -18,6 +18,10 @@ public class CheckoutService {
     public Order checkout(String couponCode) {
 
         double total = cartService.getTotal();
+        int totalItems = cartService.getItems()
+            .stream()
+            .mapToInt(i -> i.getQuantity())
+            .sum();
         double discount = 0;
 
         if (couponCode != null && !couponCode.isBlank()) {
@@ -30,6 +34,7 @@ public class CheckoutService {
         order.setTotalAmount(total);
         order.setDiscountAmount(discount);
         order.setFinalAmount(total - discount);
+            order.setTotalItems(totalItems);
         order.setCouponCode(couponCode);
 
         orderRepository.save(order);
