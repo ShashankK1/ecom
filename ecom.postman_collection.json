@@ -1,0 +1,75 @@
+{
+  "info": {
+    "_postman_id": "a582309e-9689-483f-81b4-06ebb1c17180",
+    "name": "ecom",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18927246",
+    "_collection_link": "https://go.postman.co/collection/18927246-a582309e-9689-483f-81b4-06ebb1c17180?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "ADD TO CART",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": \"P2001\",\n  \"price\": 500,\n  \"quantity\": 3\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/cart/items",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "cart",
+            "items"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CHECKOUT",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/checkout?couponCode=DISC-dc4b00",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "checkout"
+          ],
+          "query": [
+            {
+              "key": "couponCode",
+              "value": "DISC-dc4b00"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ADMIN METRICS",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
