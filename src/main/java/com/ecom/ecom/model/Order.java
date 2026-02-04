@@ -20,6 +20,7 @@ public class Order {
     private double totalAmount;
     private double discountAmount;
     private double finalAmount;
+    private int totalItems;
 
     private String couponCode;
 
