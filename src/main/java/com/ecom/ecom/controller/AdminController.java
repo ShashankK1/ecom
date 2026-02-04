@@ -3,6 +3,7 @@ package com.ecom.ecom.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import com.ecom.ecom.model.Order;
 import com.ecom.ecom.repository.OrderRepository;
 import com.ecom.ecom.service.CartService;
 import com.ecom.ecom.service.DiscountService;
@@ -25,13 +26,18 @@ public class AdminController {
                 .mapToDouble(o -> o.getFinalAmount())
                 .sum();
 
+        int itemsPurchased = orderRepo.findAll()
+            .stream()
+            .mapToInt(Order::getTotalItems)
+            .sum();
+
         double discountGiven = orderRepo.findAll()
                 .stream()
                 .mapToDouble(o -> o.getDiscountAmount())
                 .sum();
 
         return Map.of(
-                "itemsPurchased", cartService.getTotalItemsPurchased(),
+                "itemsPurchased", itemsPurchased,
                 "revenue", revenue,
                 "discountCodesGenerated", discountService.countGenerated(),
                 "totalDiscountGiven", discountGiven
